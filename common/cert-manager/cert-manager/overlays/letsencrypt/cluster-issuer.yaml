@@ -5,7 +5,10 @@ metadata:
 spec:
   acme:
     email: $(acmeEmail)
-    http01: {}
+    server: $(acmeUrl)
     privateKeySecretRef:
       name: letsencrypt-prod-secret
-    server: $(acmeUrl)
+    solvers:
+    - http01:
+        ingress:
+          serviceType: NodePort
