@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    email: $(acmeEmail)
+    server: $(acmeUrl)
+    privateKeySecretRef:
+      name: letsencrypt-prod-secret
+    solvers:
+    - http01:
+        ingress:
+          serviceType: NodePort
