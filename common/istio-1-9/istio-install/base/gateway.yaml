@@ -9,9 +9,19 @@ spec:
     app: istio-ingressgateway
     istio: ingressgateway
   servers:
-  - port:
-      number: 80
-      name: http
-      protocol: HTTP
-    hosts:
+  - hosts:
     - '*'
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      # TLS cert either mounted
+      #privateKey: /etc/istio/ingressgateway-certs/tls.key
+      #serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
+      # ... or lives in this secret
+      credentialName: istio-ingressgateway-certs
+      # These seem unnecessary when provisioning from a secret
+      #privateKey: sds
+      #serverCertificate: sds
