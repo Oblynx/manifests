@@ -4,10 +4,10 @@ metadata:
   name: istio-ingressgateway-certs
   namespace: istio-system
 spec:
-  commonName: kosamara-notebooks.web.cern.ch
+  commonName: kosamara-gpu-notebooks.web.cern.ch
   # Use dnsNames if your LoadBalancer issues a hostname (eg on AWS)
   dnsNames:
-  - kosamara-notebooks.web.cern.ch
+  - kosamara-gpu-notebooks.web.cern.ch
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
